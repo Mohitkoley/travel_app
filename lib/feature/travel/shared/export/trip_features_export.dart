@@ -1,0 +1,14 @@
+export 'package:travel_app/feature/travel/domain/entity/trip.dart';
+export 'package:travel_app/feature/travel/domain/repository/trip_repository.dart';
+export 'package:travel_app/feature/travel/data/models/trip_model.dart';
+export 'package:travel_app/feature/travel/data/data_source/local/trip_local_datasource.dart';
+export 'package:travel_app/feature/travel/data/repository/trip_repository_impl.dart';
+export 'package:travel_app/core/constants/trip_constansts.dart';
+export 'package:travel_app/feature/travel/domain/usecases/create_trip.dart';
+export 'package:travel_app/feature/travel/domain/usecases/delete_trip.dart';
+export 'package:travel_app/feature/travel/domain/usecases/get_trip.dart';
+export 'package:travel_app/feature/travel/domain/usecases/get_trips.dart';
+export 'package:travel_app/feature/travel/domain/usecases/update_trip.dart';
+export 'package:travel_app/feature/travel/domain/usecases/search_trip.dart';
+export 'package:travel_app/feature/travel/presentation/riverpod/trip_riverpod.dart';
+export 'package:travel_app/core/shared/export/package_export.dart';
