@@ -1,0 +1,56 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Dart
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+    
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.0'
+        channel: 'stable'
+
+    - name: Install dependencies
+      run: flutter pub get
+      
+    - name: Analyze project source
+      run: dart analyze
+
+    - name: Build APK
+      run: 
+        # Access the API key from the secret
+        flutter build apk
+
+      #upload apk to artifacts with the name weather_app.apk with each iteration inceament the version code
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: travel_app.apk
+        path: build/app/outputs/flutter-apk/app-release.apk
+
+      # Your project will need to have tests in test/ and a dependency on
+      # package:test for this step to succeed. Note that Flutter projects will
+      # want to change this to 'flutter test'.
+    - name: Run tests
+      run: dart test
